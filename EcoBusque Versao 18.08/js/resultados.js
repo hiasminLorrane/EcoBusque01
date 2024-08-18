@@ -1,4 +1,4 @@
-const subscriptionKey = '67ea2433362c434581404853593e8f44';
+const subscriptionKey = '2d5b7058d3674227bf23131fbef6c6b5';
 const endpoint = 'https://api.bing.microsoft.com/v7.0/search';
 const imagesEndpoint = 'https://api.bing.microsoft.com/v7.0/images/search';
 const videosEndpoint = 'https://api.bing.microsoft.com/v7.0/videos/search';

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados - EcoBusque</title>
+    <link rel="stylesheet" href="./css/resultados.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Resultados da Pesquisa</h1>
+            <div class="search-container">
+                <input type="text" id="searchQuery" placeholder="Digite suas palavras-chave" />
+                <button onclick="searchAds()">Pesquisar</button>
+            </div>
+        </header>
+        <main>
+            <div id="resultList" class="hidden"></div>
+        </main>
+    </div>
+
+    <script src="./js/resultados.js"></script>
+    <script>
+        async function loadResults(query = '') {
+            try {
+                const response = await fetch('http://localhost:3000/ads/results');
+                const ads = await response.json();
+
+                // Filtra anúncios com base na query
+                const filteredAds = ads.filter(ad =>
+                    ad.palavraChave.toLowerCase().includes(query.toLowerCase())
+                );
+
+                const resultContainer = document.getElementById('resultList');
+                resultContainer.innerHTML = filteredAds.map(ad =>
+                    `<div class="result">
+                        <h3><a href="${ad.url}" target="_blank">${ad.titulo}</a></h3>
+                        <p>${ad.descricao}</p>
+                    </div>`
+                ).join('');
+
+                // Mostra o container de resultados apenas se houver anúncios
+                if (filteredAds.length > 0) {
+                    resultContainer.classList.remove('hidden');
+                } else {
+                    resultContainer.classList.add('hidden');
+                }
+            } catch (error) {
+                console.error('Erro ao carregar resultados:', error);
+            }
+        }
+
+        function searchAds() {
+            const query = document.getElementById('searchQuery').value;
+            loadResults(query);
+        }
+
+        // Carrega resultados ao carregar a página, sem mostrar nada inicialmente
+        loadResults();
+    </script>
+</body>
+</html>

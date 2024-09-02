@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados da Pesquisa - EcoBusque</title>
+    <link rel="stylesheet" href="./css/resultados.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Resultados da Pesquisa</h1>
+            <div class="search-container">
+                <label for="searchQuery">Pesquisar:</label>
+                <input type="text" id="searchQuery" placeholder="Digite suas palavras-chave">
+                <button onclick="performSearch()">Pesquisar</button>
+            </div>
+        </header>
+        <main>
+            <div id="resultList" aria-live="polite"></div>
+        </main>
+    </div>
+
+    <script>
+        async function performSearch() {
+            const query = document.getElementById('searchQuery').value;
+            try {
+                const response = await fetch(`http://localhost:3000/ads?keyword=${encodeURIComponent(query)}`);
+                const ads = await response.json();
+                
+                const resultContainer = document.getElementById('resultList');
+                resultContainer.innerHTML = ads.length > 0 
+                    ? ads.map(ad => 
+                        `<div class="ad">
+                            <h3><a href="${ad.url}" target="_blank">${ad.titulo}</a></h3>
+                            <p>${ad.descricao}</p>
+                        </div>`
+                    ).join('')
+                    : '<p>Nenhum anúncio encontrado.</p>';
+            } catch (error) {
+                console.error('Erro ao carregar anúncios:', error);
+            }
+        }
+    </script>
+</body>
+</html>

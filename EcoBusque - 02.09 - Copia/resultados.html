@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoBusque - Resultados</title>
+    <link rel="stylesheet" href="./css/resultados.css">
+    <link rel="icon" href="./img/3194500.png" type="image/png">
+</head>
+<body>
+
+        <img src="img/ecogle.png" alt="Logo" class="imgLogo2">
+   
+
+    <div class="search-container">
+        <input type="text" id="query" placeholder="Digite sua pesquisa" onkeypress="checkEnter(event)" />
+        <span class="search-icon" onclick="search()">
+            <img src="img/lupa-arredondada.png" alt="Ícone de Pesquisa" class="search-icon-img">
+        </span>
+    </div>
+
+    <nav class="menu">
+        <div class="button-container">
+            <ul>
+                <li class="category-button"><a href="#" onclick="showCategory('webResults')">Web</a></li>
+                <li class="category-button"><a href="#" onclick="showCategory('imageResults')">Imagens</a></li>
+                <li class="category-button"><a href="#" onclick="showCategory('videoResults')">Vídeos</a></li>
+                <li class="category-button"><a href="#" onclick="showCategory('newsResults')">Notícias</a></li>
+                <li class="category-button"><a href="#" onclick="searchMaps()">Mapas</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="results">
+        <div id="webResults" class="category">
+            <h2 id="web-title">Web</h2>
+            <ul id="adList" class="ad-result"></ul> <!-- Lista de Anúncios -->
+            <ul id="webList" class="result"></ul> <!-- Lista de Resultados de Pesquisa -->
+        </div>
+        <div id="imageResults" class="category hidden">
+            <h2>Imagens</h2>
+            <div class="images-container" id="imageList"></div>
+        </div>
+        <div id="videoResults" class="category hidden">
+            <h2>Vídeos</h2>
+            <ul id="videoList" class="result"></ul>
+        </div>
+        <div id="newsResults" class="category hidden">
+            <h2>Notícias</h2>
+            <ul id="newsList" class="result"></ul>
+        </div>
+    </div>
+
+    <script src="./js/resultados.js" defer></script>
+
+    <footer>
+        <p>&copy; 2024 EcoBusque. Todos os direitos reservados.</p>
+    </footer>
+    <script src="./js/script.js" defer></script>
+</body>
+</html>

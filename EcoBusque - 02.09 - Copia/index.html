@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="EcoBusque é um buscador web focado em eficiência e sustentabilidade. Encontre o que precisa com consciência ambiental.">
+  <title>EcoBusque</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" href="./img/3194500.png" type="image/png">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3125265111665606"
+    crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+  <header id="header">
+    <nav>
+      <button id="menu-toggle" class="menu-icon" aria-label="Menu">
+        <img src="img/imgMenu.png" alt="Menu">
+      </button>
+      <ul id="menu" class="menu">
+        <li><a href="sobre.html" class="link">Sobre</a></li>
+        <li><a href="contato.html" class="link">Contato</a></li>
+        <li><a href="politica-privacidade.html" class="link">Política de Privacidade</a></li>
+      </ul>
+    </nav>
+    <img src="img/ecogle.png" alt="Logo EcoBusque" class="imgLogo1">
+    <div class="search-container">
+      <input type="text" id="query" placeholder="pesquise na web" list="suggestions" onkeypress="checkEnter(event)">
+      <span class="search-icon" onclick="search()">
+        <img src="img/lupa-arredondada.png" alt="Ícone de Pesquisa" class="search-icon-img">
+      </span>
+    </div>
+  </header>
+
+  <datalist id="suggestions"></datalist>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="100%" style="stop-color:#9bf074;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#5b9641;stop-opacity:1" />
+      </linearGradient>
+    </defs>
+    <path fill="url(#gradient)" d="M0,0 Q50,20 100,0 L100,20 L0,20 Z" />
+  </svg>
+
+ 
+    <img src="img/imagem2.png" alt="Imagem destacada" class="img1">
+
+
+    <h1 class="rede"> Conheça um pouco do nosso trabalho nas redes </h1>
+    <div class="container">
+      <div class="cards">
+          <img src="img/plante.jpg" alt="Imagem de planta 1">
+          <p>@ecoglebrasil</p>
+          <button class="like-button">👍 Like</button>
+          <div class="confetti-container"></div>
+      </div>
+      <div class="cards">
+          <img src="img/plante2.jpg" alt="Imagem de planta 2">
+          <p>@ecoglebrasil</p>
+          <button class="like-button">👍 Like</button>
+          <div class="confetti-container"></div>
+      </div>
+      <div class="cards">
+          <img src="img/plante3.jpg" alt="Imagem de planta 3">
+          <p>@ecoglebrasil</p>
+          <button class="like-button">👍 Like</button>
+          <div class="confetti-container"></div>
+      </div>
+  </div>
+  
+  <section id="section2" class="section">
+    <div class="container2">
+      <div class="texto">
+        <h2>Objetivo</h2>
+        <p>Facilitar suas buscas com consciência ambiental, unindo eficiência e sustentabilidade para um futuro melhor
+        </p>
+      </div>
+      <div class="icones">
+        <div class="icone">
+          <img src="img/1-removebg-preview.png" alt="Ícone 1">
+        </div>
+        <div class="icone">
+          <img src="img/2-removebg-preview.png" alt="Ícone 2">
+        </div>
+        <div class="icone">
+          <img src="img/3-removebg-preview.png" alt="Ícone 3">
+        </div>
+        <div class="icone">
+          <img src="img/iconOb.png" alt="Ícone 3">
+        </div>
+        <div class="icone">
+          <img src="img/iconOb2.png" alt="Ícone Objeto 2">
+        </div>
+        <div class="icone">
+          <img src="img/iconOb3.png" alt="Ícone Objeto 3">
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <div class="content">
+    <div class="image-text-wrapper">
+        <img src="img/semente.jpg" alt="Imagem 1" class="img2">
+        <div class="text-content">
+            <h2>Semeie as suas buscas</h2>
+            <p>Assim como uma semente plantada na terra, cada busca que você realiza é um passo em direção ao conhecimento e à transformação.<br> Escolha sabiamente, buscando informações que promovam o bem-estar do planeta e da sociedade.
+
+            </p>
+        </div>
+    </div>
+    <div class="image-text-wrapper">
+        <img src="img/vida.jpg" alt="Imagem 2" class="img2">
+        <div class="text-content">
+            <h2>E colha a vida</h2>
+            <p>À medida que suas buscas se tornam ações conscientes, você começa a colher os frutos de um futuro mais sustentável.<br> As árvores que crescem simbolizam a vida que floresce a partir de escolhas informadas e responsáveis.</p>
+        </div>
+    </div>
+</div>
+
+  
+  <footer>
+    <p>&copy; 2024 EcoBusque. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="./js/script.js" defer></script>
+</body>
+
+</html>

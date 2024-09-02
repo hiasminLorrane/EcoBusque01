@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro e Pesquisa de Anúncios - EcoBusque</title>
+    <link rel="stylesheet" href="./css/anuncio.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Cadastro e Pesquisa de Anúncios</h1>
+        </header>
+        <main>
+            <section class="search-section">
+                <h2>Pesquisar Anúncios</h2>
+                <div class="search-bar">
+                    <input type="text" id="searchQuery" placeholder="Digite sua pesquisa">
+                    <button onclick="performSearch()">Pesquisar</button>
+                </div>
+                <div id="adList" class="ad-list"></div>
+            </section>
+
+            <section class="pending-ads-section">
+                <h2>Anúncios Pendentes de Aprovação</h2>
+                <div id="pendingAds" class="ad-list"></div>
+            </section>
+
+            <section class="form-section">
+                <h2>Cadastro de Novo Anúncio</h2>
+                <form id="ad-form" class="ad-form">
+                    <label for="title">Título do Anúncio:</label>
+                    <input type="text" id="title" name="title" required>
+                    
+                    <label for="description">Descrição:</label>
+                    <textarea id="description" name="description" rows="4" required></textarea>
+                    
+                    <label for="keywords">Palavras-chave:</label>
+                    <input type="text" id="keywords" name="keywords" required>
+                    
+                    <label for="website">Link do Site:</label>
+                    <input type="url" id="website" name="website" required>
+                    
+                    <label for="position">Posição nas Pesquisas:</label>
+                    <select id="position" name="position" required>
+                        <option value="" disabled selected>Selecione uma posição</option>
+                        <option value="1" data-price="100">1ª posição - R$ 100/mês</option>
+                        <option value="2" data-price="200">2ª posição - R$ 200/mês</option>
+                        <option value="3" data-price="300">3ª posição - R$ 300/mês</option>
+                    </select>
+                    
+                    <label for="period">Período:</label>
+                    <select id="period" name="period" required>
+                        <option value="1" data-price="100">1 mês - R$ 100</option>
+                        <option value="2" data-price="200">2 meses - R$ 200</option>
+                        <option value="3" data-price="300">3 meses - R$ 300</option>
+                    </select>
+                    
+                    <button type="submit">Confirmar</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        async function performSearch() {
+            const query = document.getElementById('searchQuery').value;
+            try {
+                const adContainer = document.getElementById('adList');
+                const response = await fetch(`http://localhost:3000/ads?keyword=${encodeURIComponent(query)}`);
+                const ads = await response.json();
+                
+                adContainer.innerHTML = ads.length > 0 
+                    ? ads.map(ad => 
+                        `<div class="ad-card">
+                            <h3><a href="${ad.url}" target="_blank">${ad.titulo}</a></h3>
+                            <p>${ad.descricao}</p>
+                        </div>`
+                    ).join('')
+                    : '<p>Nenhum anúncio encontrado.</p>';
+            } catch (error) {
+                console.error('Erro ao carregar anúncios:', error);
+            }
+        }
+
+        async function loadPendingAds() {
+            try {
+                const response = await fetch('http://localhost:3000/ads/pending');
+                const ads = await response.json();
+                
+                const pendingAdsContainer = document.getElementById('pendingAds');
+                pendingAdsContainer.innerHTML = ads.length > 0 
+                    ? ads.map(ad => 
+                        `<div class="ad-card">
+                            <h3>${ad.titulo}</h3>
+                            <p>${ad.descricao}</p>
+                            <button onclick="approveAd(${ad.id})">Aprovar</button>
+                        </div>`
+                    ).join('')
+                    : '<p>Nenhum anúncio pendente encontrado.</p>';
+            } catch (error) {
+                console.error('Erro ao carregar anúncios pendentes:', error);
+            }
+        }
+
+        async function approveAd(id) {
+            try {
+                const response = await fetch(`http://localhost:3000/ads/${id}/approve`, {
+                    method: 'PUT'
+                });
+
+                if (response.ok) {
+                    alert('Anúncio aprovado!');
+                    loadPendingAds();
+                } else {
+                    alert('Erro ao aprovar o anúncio');
+                }
+            } catch (error) {
+                console.error('Erro ao aprovar o anúncio:', error);
+            }
+        }
+
+        document.getElementById('ad-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const adData = {
+                title: document.getElementById('title').value,
+                description: document.getElementById('description').value,
+                keywords: document.getElementById('keywords').value.split(',').map(kw => kw.trim()),
+                website: document.getElementById('website').value
+            };
+
+            fetch('http://localhost:3000/ads', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(adData)
+            }).then(response => response.text())
+              .then(data => {
+                  alert('Anúncio cadastrado e aguardando aprovação!');
+                  document.getElementById('ad-form').reset(); // Limpa o formulário
+              }).catch(error => {
+                  console.error('Erro:', error);
+              });
+        });
+
+        // Carrega os anúncios pendentes ao carregar a página
+        loadPendingAds();
+    </script>
+</body>
+</html>

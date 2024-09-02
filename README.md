@@ -10,6 +10,8 @@ para rodar o servidor:
 
 4- abra o ecobusque 02.09 no vs code 
 
+5- ligue o Go Live na pasta inicial do index
+
 esperado:
 
 Servidor rodando em http://localhost:3000

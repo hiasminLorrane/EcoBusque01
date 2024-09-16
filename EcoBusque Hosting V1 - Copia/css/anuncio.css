@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #b2ff5a6e;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background: #ffffff;
+    color: #000000;
+    border-bottom: 3px solid #8eff7275;
+    padding: 10px 0;
+    font-size: 15px;
+    font-weight: lighter;
+    text-align: center;
+}
+.imgLogo3 {
+    width: 300px; /* Ajuste o tamanho da imagem logo para telas menores */
+    height: 130px;
+    margin-top: 70px; /* Ajuste a margem superior para telas menores */
+    
+}
+main {
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+h2 {
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 80px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.ad {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.ad h3 {
+    margin: 0;
+}
+
+.ad p {
+    margin: 5px 0;
+}

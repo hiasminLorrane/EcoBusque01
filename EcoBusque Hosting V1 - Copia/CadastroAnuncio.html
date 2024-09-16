@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro e Pesquisa de Anúncios - EcoBusque</title>
+    <link rel="stylesheet" href="./css/CadastrarAnuncio.css">
+    <style>
+        /* CSS para ocultar o botão inicialmente */
+        #confirm-button {
+            display: none;
+        }
+        .intro-section {
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .intro-section h1 {
+            font-size: 2em;
+            color: #333;
+            margin: 0;
+        }
+        .intro-section p {
+            font-size: 1.2em;
+            color: #666;
+            margin-top: 10px;
+        }
+        .payment-section {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .payment-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .payment-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .payment-card h3 {
+            margin-top: 0;
+            font-size: 1.5em;
+            color: #333;
+        }
+        .price {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #333;
+            margin: 10px 0;
+        }
+        .description {
+            font-size: 1em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .payment-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        .monthly-button {
+            background-color: #28a745; /* Cor verde */
+        }
+        .monthly-button:hover {
+            background-color: #218838;
+        }
+        .annual-button {
+            background-color: #ff5722; /* Cor laranja */
+        }
+        .annual-button:hover {
+            background-color: #e64a19;
+        }
+        .whatsapp-button {
+            background-color: #25D366; /* Cor verde do WhatsApp */
+            color: white;
+            font-size: 1em;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .whatsapp-button img {
+            width: 24px;
+            height: 24px;
+        }
+        @media (max-width: 768px) {
+            .payment-card {
+                width: 100%;
+                max-width: none;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="img/ecogle.png" alt="Logo" class="imgLogo3">
+        </header>
+        <main>
+            <section class="form-section">
+                <h2>Cadastro de Novo Anúncio</h2>
+                <form id="ad-form">
+                    <input type="text" id="title" placeholder="Título" required>
+                    <textarea id="description" placeholder="Descrição" required></textarea>
+                    <input type="text" id="keywords" placeholder="Palavras-chave (separadas por vírgula)" required>
+                    <input type="url" id="website" placeholder="URL do anúncio" required>
+                    <input type="text" id="periodo" placeholder="Período" required>
+                    <input type="number" id="posicao" placeholder="Posição" required>
+                    <button type="submit">Cadastrar Anúncio</button>
+                </form>
+            </section>
+
+            <section class="payment-section">
+                <div class="payment-card">
+                    <h3>Plano Mensal</h3>
+                    <span class="price">R$ 365,00</span>
+                    <p class="description">Ideal para quem precisa de flexibilidade. Cobre um mês de uso do serviço.</p>
+                    <button id="monthly-plan-button" class="payment-button monthly-button">Escolher Plano</button>
+                </div>
+                <div class="payment-card">
+                    <h3>Plano Anual</h3>
+                    <span class="price">R$ 1.400,00</span>
+                    <p class="description">Para quem deseja um compromisso mais longo e economizar. Cobre um ano de uso do serviço.</p>
+                    <button id="annual-plan-button" class="payment-button annual-button">Escolher Plano</button>
+                </div>
+            </section>
+
+            <section class="whatsapp-section" style="text-align: center; margin-top: 20px;">
+                <a href="https://wa.me/5511999999999?text=Olá!%20Envio%20do%20comprovante%20de%20pagamento%20para%20o%20plano%20escolhido." class="whatsapp-button" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"> Enviar Comprovante pelo WhatsApp
+                </a>
+            </section>
+        </main>
+    </div>
+    <script src="./js/CadastroAnuncio.js"></script>
+</body>
+</html>

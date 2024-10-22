@@ -1,0 +1,368 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0; /* Corrigido para remover margem padrão */
+    padding: 0;
+    background: linear-gradient(135deg, #ffffff, #ffffff);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+    border-radius: 10px;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 3em;
+    font-weight: 700;
+    color: #2c6b57;
+    margin: 0;
+    position: relative;
+}
+
+
+/* Estilo base para o container de botões */
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    padding: 10px;
+}
+
+/* Estilo base para o container de botões de categoria */
+.categories {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os botões se movam para a linha seguinte se não houver espaço suficiente */
+    gap: 8px; /* Espaçamento entre os botões */
+    justify-content: center; /* Centraliza os botões no container */
+    margin-top: 50px;
+    width: 100%;
+    max-width: 600px;
+    align-items: center;
+    gap: 1.2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Estilo base para os botões de categoria */
+.category-button {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+/* Efeito ao passar o mouse sobre os botões */
+.category-button:hover {
+    background-color: #f0f0f0;
+    color: #333333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Estilo para telas pequenas */
+@media (max-width: 600px) {
+    .category-button {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+    .search-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-icon {
+        right: 10px; /* Ajuste para alinhamento em telas menores */
+        top: auto;
+        bottom: 10px; /* Ajuste para alinhamento em telas menores */
+    }
+
+    .menu {
+        flex-wrap: wrap; /* Permite quebra de linha nos botões */
+        justify-content: center; /* Centraliza os botões */
+    }
+
+    .menu button {
+        margin: 5px; /* Margem menor para ajustar em telas menores */
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}
+
+/* Estilo para telas muito pequenas */
+@media (max-width: 400px) {
+    .category-button {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    .search-icon {
+        width: 18px; /* Ajuste o tamanho para telas menores */
+        height: 18px;
+    }
+
+    .imgLogo2 {
+        width: 200px; /* Ajuste o tamanho da imagem logo para telas menores */
+        height: 100px;
+        margin-top: 100px; /* Ajuste a margem superior para telas menores */
+    }
+}
+
+.search-container {
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+#query {
+    width: 100%;
+    padding: 10px 40px 10px 15px; /* Adiciona espaço para o ícone de lupa */
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    box-sizing: border-box;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    right: 17px; /* Posiciona o ícone de lupa dentro do input */
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.search-icon-img {
+    width: 20px; /* Ajusta o tamanho do ícone de lupa */
+    height: 20px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 13px;
+    border: 1px solid #dcdcdc;
+    border-radius: 24px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    outline: none;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+input[type="text"]:focus {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+
+#results {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.result-count {
+    font-size: 14px;
+    color: #5f6368;
+    margin-bottom: 15px;
+    margin-top: -10px;
+}
+
+.result {
+    padding: 15px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.result h3 a {
+    text-decoration: none;
+    color: #1a0dab;
+    font-size: 18px;
+}
+
+.result h3 a:hover {
+    text-decoration: underline;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 99;
+}
+
+.hidden {
+    display: none;
+}
+
+
+
+.menu button {
+    margin-right: 15px;
+    padding: 12px 24px;
+    background-color: #109230;
+    color: #ffffff;
+    border: none;
+    border-radius:27px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    white-space: nowrap;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display:inline-flex;
+    justify-content: center;
+    gap: 5px;
+    position:absolute;
+    z-index: 10;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 7px; /* Espaçamento entre os itens do menu */
+}
+
+nav a {
+    text-decoration: none;
+    color: #31c255;
+    font-size: 16px;
+    text-align: center;
+    display: block; /* Permite o alinhamento centralizado no bloco */
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+
+.imgLogo2 {
+   width: 150px; /* Ajuste o tamanho do logo conforme necessário */
+    height: auto;
+}
+/* Estilo para a lista de anúncios */
+.ad-result {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ad-result li {
+    background-color: #fff;
+    border: 1px solid #0000003d;
+    border-radius: 25px;
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+
+
+.ad-content {
+    flex: 1;
+}
+
+.ad-title {
+    font-size: 16px;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.ad-title:hover {
+    text-decoration: underline;
+}
+
+.ad-description {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Estilo para a lista de anúncios */
+.ad-result {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ad-result li {
+    background-color: #ffffff;
+    border: 1px solid #c9c7c7;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    padding: 10px;
+    position: relative;
+}
+
+.ad-result .ad-label {
+    position: absolute;
+    top: 10px;
+    right: 510px;
+    background-color: #e3fc00;
+    color: #000000;
+    border: 1px solid #000000;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+.ad-result h3 {
+    margin: 0;
+    margin-top: 26px;
+    font-size: 16px;
+    color: #000000;
+}
+
+.ad-result p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.ad-result a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.ad-result a:hover {
+    text-decoration: underline;
+}

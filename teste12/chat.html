@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat IA - EcoBusque</title>
+    <link rel="stylesheet" href="./css/AI.css">
+    <link rel="icon" href="./img/3194500.png" type="image/png">
+</head>
+<body>
+
+    <header>
+        <button class="home-button" onclick="window.location.href='index.html'">Home</button>
+        <img src="img/ecogle.png" alt="Logo" class="imgLogo2">
+        <h1>IA Ecológica 🤖</h1>
+    </header>
+
+    <div id="chat-container">
+        <div id="chat-box">
+            <!-- As mensagens do chat vão aqui -->
+          
+        </div>
+        <div id="input-container">
+            <input type="text" id="message" placeholder="Digite sua mensagem" onkeypress="checkEnterChat(event)">
+            <button onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
+
+    <script src="./js/AI.js" defer></script>
+</body>
+</html>

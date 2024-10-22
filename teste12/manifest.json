@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Minha Extensão",
+  "version": "1.0",
+  "description": "Uma extensão que integra com a API do meu site.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "iconOb.png"
+    }
+  },
+  "permissions": [
+    "storage",
+    "activeTab",  
+    "scripting"   
+  ],
+  "host_permissions": [
+    "<all_urls>"  
+  ]
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minha Extensão</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Impede a barra de rolagem */
+            height: 100vh;   /* Usa 100% da altura da janela */
+            width: 100vw;    /* Usa 100% da largura da janela */
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none; /* Remove a borda do iframe */
+        }
+    </style>
+</head>
+<body>
+    <iframe src="https://ecoogle.com.br" allowfullscreen></iframe>
+    <script>
+        // Solicita o modo de tela cheia quando a página é carregada
+        document.addEventListener('DOMContentLoaded', function() {
+            const elem = document.documentElement; // Obtém o elemento raiz
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen(); // Para navegadores compatíveis
+            } else if (elem.mozRequestFullScreen) {
+                elem.mozRequestFullScreen(); // Para Firefox
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen(); // Para Chrome e Safari
+            } else if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen(); // Para IE/Edge
+            }
+        });
+    </script>
+
+</body>
+</html>

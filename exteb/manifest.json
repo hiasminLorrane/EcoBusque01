@@ -1,22 +1,23 @@
 {
   "manifest_version": 3,
-  "name": "Minha Extensão",
+  "name": "Eu Planto Buscas",
   "version": "1.0",
   "description": "Uma extensão que integra com a API do meu site.",
   "action": {
-    "default_popup": "popup.html",
+    "default_title": "Abrir em Tela Cheia",
     "default_icon": {
       "16": "iconOb.png"
     }
   },
-  "permissions": [
-    "storage",
-    "activeTab",
-    "scripting"
-  ],
   "host_permissions": [
-    "<all_urls>"
+    "https://api.bing.microsoft.com/*"
   ],
+  "permissions": [
+    "tabs"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "icons": {
     "16": "iconOb.png",
     "48": "iconOb.png",
